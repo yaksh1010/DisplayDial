@@ -8,6 +8,10 @@
   Change your external monitor's real brightness, contrast and colors from the Mac menu bar.
 </p>
 
+<p align="center">
+  <a href="https://github.com/yaksh1010/DisplayDial/releases/latest/download/DisplayDial.dmg"><b>⬇️ Download DisplayDial.dmg</b></a>
+</p>
+
 <p align="center"><img src="docs/popover.png" width="340" alt="DisplayDial menu bar popover"></p>
 
 ## What it does
@@ -34,11 +38,28 @@ It only shows the settings your monitor says it supports.
 
 Tested with an Acer KB272 G0 on a 13" M1 MacBook Pro running macOS 26.2.
 
-## Build and install
+## Install
+
+1. [Download DisplayDial.dmg](https://github.com/yaksh1010/DisplayDial/releases/latest/download/DisplayDial.dmg), open it and drag **DisplayDial** into **Applications**.
+2. Open DisplayDial. It isn't notarized by Apple, so macOS blocks it the first time:
+   - Click **Done** on the warning.
+   - Open **System Settings → Privacy & Security**, scroll down and click **Open Anyway** next to DisplayDial.
+   - Or run this once in Terminal instead:
+     ```bash
+     xattr -dr com.apple.quarantine /Applications/DisplayDial.app
+     ```
+3. Click the ☀︎ in the menu bar. If your monitor shows **Software** instead of **DDC**, turn on DDC/CI in the
+   monitor's own on-screen menu, then click ⟳.
+
+No permissions are needed: no accessibility, screen recording or disk access.
+
+## Build from source
 
 Needs Xcode (or the Command Line Tools).
 
 ```bash
+git clone https://github.com/yaksh1010/DisplayDial.git
+cd DisplayDial
 ./build.sh --install    # build, copy to /Applications, launch
 ./build.sh --dmg        # make dist/DisplayDial.dmg
 ```
